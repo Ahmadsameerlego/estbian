@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css" integrity="sha512-gxWow8Mo6q6pLa1XH/CcH8JyiSDEtiwJV78E+D+QP0EVasFs8wKXq16G8CLD4CJ2SnonHr4Lm/yY2fSI2+cbmw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <!-- nice select -->
-    <link rel="stylesheet" href="css/nice-select.css">
+    <!--  Flatpicker Styles  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+    
     <!-- bootstrap5 csn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Link Swiper's CSS -->
@@ -198,9 +199,9 @@
         <!-- end header -->
 
         <!-- start personal form --> 
-        <section id="queries" class="">
+        <section id="queries" class="pb-5">
             <div class="container">
-                <div class="queries">
+                <div class="queries pb-5">
                     <h5 class="color1 text-center pt-5">اضافة اسئلة الاستبيان</h5>
 
                     <!-- 
@@ -223,10 +224,10 @@
                             <span class="stepTitle color2 fw-bold"> اضافة الاسئلة </span>
                         </div>
 
-                        <!-- single step => inactive -->
-                        <div class="singleStep d-flex justify-content-center align-items-center flex-column">
-                            <span class="stepCircle "></span>
-                            <span class="stepTitle  fw-bold"> الفئة المستهدفة </span>
+                        <!-- single step => active -->
+                        <div class="singleStep active d-flex justify-content-center align-items-center flex-column">
+                            <span class="stepCircle active"></span>
+                            <span class="stepTitle color2 fw-bold"> الفئة المستهدفة </span>
                         </div>
 
 
@@ -239,216 +240,14 @@
                     </div>
                     <!-- end steps -->
 
-                    <div class="login_form3 mt-5 mb-5 pb-3 pt-3">
+                    <!-- success send -->
+                    <div class="success d-flex justify-content-center mx-auto mt-4 flex-column align-items-center">
+                        <img src="imgs/success.gif" alt="" class="success_alert">
 
-                        
-                        <!--
-                            1=>form for all page content
-                            2=>class => singleQueryQuestion is for all part of form
-                        -->
-                        <form action="targetTypes.html">
-
-                            <!-- part 1 -->
-                            <div class="singleQueryQuestion pt-3 pb-3 mb-5">
-
-
-                                <!-- upload image -->   
-                                <div class="d-flex flex-wrap parent-img">
-                                    <div class="drop-box mr-2 ml-2">
-                                        <div class="text-center box-up">
-                                            <div class="images-upload-block">
-                                                <label class="upload-img d-flex justify-content-center align-items-center flex-column">
-                                                    <span class="color2">
-                                                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                                                    </span>                                       
-                                                    <span class="color2"> ارفاق الصورة </span> 
-                                                    <input type="file" accept="image/*" class="form-control image-uploader" name="imageArr[]" required="" multiple>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- form content -->
-                                <div class="single_query_form single_query_form1">
-
-                                        <div class="mb-3 mt-3 form_group">
-                                            <label for="queryname" class="form-label">عنوان السؤال</label>
-                                            <input type="text" name="" id="queryname" value="" placeholder="برجاء ادخال عنوان السؤال" class="password form-control">
-                                        </div>
-
-                                        <!-- main select box -->
-                                        
-                                        <div class="form_group mb-3 mt-3 d-flex flex-column">
-                                            <label for="" class="form-label">نوع السؤال</label>
-                                            <select class="form-select querySelect asset-selection"  multiple onchange="getData(this)">
-                                                <option selected>برجاء نوع السؤال </option>
-                                                <option value="1" data-set="asset1">&#xf192;  اختيار واحد من متعدد</option>
-                                                <option value="2" data-set="asset2">&#xf14a; اكثر من اختيار من خيارات متعددة</option>
-                                                <option value="3" data-set="asset3">&#xf017; وقت</option>
-                                                <option value="4" data-set="asset4">&#xf133; ناريخ</option>
-                                                <option value="5" data-set="asset5">&#xf022; فقرة قصيرة</option>
-                                                <option value="6" data-set="asset6">&#xf0c9; فقرة</option>
-                                                <option value="7" data-set="asset7">&#xf009; شبكة مربعة الخيارات</option>
-                                                <option value="8" data-set="asset8">&#xf2a1; شبكة متعددة الخيارات</option>
-                                            </select>
-                                            <!-- <i class="fa-solid fa-chevron-down"></i>                                             -->
-                                        </div>
-
-
-                                        <!-- variable content depend on select option -->
-                                        <section>
-                                            <!-- part1 -->
-                                            <div class="asset asset1  part1" data-div="asset1">
-                                                <div class="boxes">
-                                                    <div class="mb-3 mt-3 form_group chooseOption">
-                                                        <label for="choose1" class="form-label">الخيار ddddddddddالاول</label>
-                                                        <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                    </div>
-                                                </div>
-    
-                                                <div>
-                                                    <button class="btn button1 addOption" type="button">اضافة خيار</button>
-                                                </div>
-                                            </div>
-
-                                            <!-- part2 -->
-                                            <div class=" asset asset2 part2" data-div="asset2">
-                                                <!-- part2 -->
-                                                <div class="boxes">
-                                                    <div class="mb-3 mt-3 form_group chooseOption">
-                                                        <label for="choose1" class="form-label">الخيار الاول</label>
-                                                        <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                    </div>
-                                                </div>
-        
-                                                <div>
-                                                    <button class="btn button1 addOption" type="button">اضافة خيار</button>
-                                                </div>
-                                            </div>
-
-                                            <!-- part3 -->
-                                            <div class="asset part3" data-div="asset3">
-                                                <div class="timeDetails">
-                                                    <p class="color3"> الوقت </p>
-                                                </div>
-                                            </div>
-
-                                            <!-- part4 -->
-                                            <div class="asset part4" data-div="asset4">
-                                                <div class="timeDetails">
-                                                    <p class="color3"> فقرة قصيرة </p>
-                                                </div>
-                                            </div>
-
-                                            <!-- part55 -->
-                                            <div class="asset part5" data-div="asset5">
-                                                <div class="timeDetails">
-                                                    <p class="color3"> فقرة قصيرة </p>
-                                                </div>
-                                            </div>
-
-                                            <!-- par6 -->
-                                            <div class="asset part6" data-div="asset6">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h6 class="color2">الصفوف</h6>
-                                                        <div class="boxes">
-                                                            <div class="mb-3 mt-3 form_group chooseOption">
-                                                                <label for="choose1" class="form-label"><i class="fa-regular fa-square"></i> الصف الاول </label>
-                                                                <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                            </div>
-                                                        </div>
-                
-                                                        <div>
-                                                            <button class="btn button1 addOption" type="button">اضافة صف</button>
-                                                        </div>
-                                                    </div>
-        
-                                                    <div class="col-md-6">
-                                                        <h6 class="color2">الاعمدة</h6  >
-                                                        <div class="boxes">
-                                                            <div class="mb-3 mt-3 form_group chooseOption">
-                                                                <label for="choose1" class="form-label"><i class="fa-regular fa-square"></i> الصف الاول </label>
-                                                                <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                            </div>
-                                                        </div>
-                
-                                                        <div>
-                                                            <button class="btn button1 addOption" type="button">اضافة عمود</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- part7 -->
-                                            <div class="asset part7" data-div="asset7">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h6 class="color2">الصفوف</h6>
-                                                        <div class="boxes">
-                                                            <div class="mb-3 mt-3 form_group chooseOption">
-                                                                <label for="choose1" class="form-label"><i class="fa-regular fa-circle"></i> الصف الاول </label>
-                                                                <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                            </div>
-                                                        </div>
-                
-                                                        <div>
-                                                            <button class="btn button1 addOption" type="button">اضافة صف</button>
-                                                        </div>
-                                                    </div>
-        
-                                                    <div class="col-md-6">
-                                                        <h6 class="color2">الاعمدة</h6  >
-                                                        <div class="boxes">
-                                                            <div class="mb-3 mt-3 form_group chooseOption">
-                                                                <label for="choose1" class="form-label"><i class="fa-regular fa-circle"></i> الصف الاول </label>
-                                                                <input type="text" name="" id="choose1" value="" placeholder="برجاء ادخال الخيار الاول" class="password form-control" disabled>
-                                                            </div>
-                                                        </div>
-                
-                                                        <div>
-                                                            <button class="btn button1 addOption" type="button">اضافة عمود</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
-
-                                        <hr>
-
-                                        <div class="editQuestion d-flex justify-content-between align-items-baseline">
-                                            <button class="btn text-danger fw-500"> 
-                                                <i class="fa-regular fa-trash-can"></i>  
-                                                حذف السؤال  
-                                            </button>
-
-                                            <div class="switchButtom d-flex align-items-baseline justify-content-between">
-                                                <p class="color3 fw-500"> نوع السؤال </p>
-                                                <label class="switch">
-                                                    <input type="checkbox">
-                                                    <span class="slider"></span>
-                                                </label>
-                                                <p class="fw-500">غير مطلوب</p>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="user_inter user_inter_4 d-flex justify-content-center mt-4">
-                                <button  class="btn button1">
-                                     التالي 
-                                     <div class="spinner-border" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                </button>
-                            </div>
-
-                        </form>
-
+                        <p class="fw-500 mt-3">تم ارسال الاستبيان بنجاح بانتظار الموافقة وتحديد سعر الاستبيان</p>
                     </div>
+
+
                 </div>
             </div>
         </section>
@@ -531,8 +330,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js" integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM4h5yjQoMjWUhCJbYgWamtL6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- nice select -->
-    <script src="js/jquery.nice-select.js"></script>
+    <!--  Flatpickr  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+
     <!-- fontawesome v.6 cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js" integrity="sha512-8pHNiqTlsrRjVD4A/3va++W1sMbUHwWxxRPWNyVlql3T+Hgfd81Qc6FC5WMXDC+tSauxxzp1tgiAvSKFu1qIlA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- bootstrap 5 cdn -->
@@ -540,55 +340,6 @@
     <script src="js/main.js"></script>
 
 
-    <script>
-
-        // add a choose option  => same script add one chhose option and rows , columns
-        let addOptions = document.querySelectorAll('.addOption');
-
-        addOptions.forEach( (e)=>{
-            e.addEventListener('click', ()=>{
-
-                let clonedDiv = e.parentElement.parentElement.children;
-
-                for( i = 0; i < clonedDiv.length ; i++ ){
-                    if( clonedDiv[i].className == "boxes" ){
-                     
-                        let clone = clonedDiv[i].firstElementChild.cloneNode(true);
-
-                        clonedDiv[i].appendChild(clone)   
-                    }
-                }
-            })
-        } )
-
-        // hide and show parts depend on select
-        
-        function getData(obj){
-            let data = obj.options[obj.selectedIndex].getAttribute('data-set');
-            
-
-            let divs = document.querySelectorAll('.asset');
-
-            divs.forEach( (e)=>{
-
-                let datadiv = e.getAttribute('data-div');
-
-                if ( data == datadiv ){
-                    e.classList.add('active');
-
-                   let inp = document.querySelectorAll(`.${e.children[0].className} input`)
-                   inp.forEach(ele=> ele.removeAttribute('disabled'))
-
-                }else{
-                    e.classList.remove('active');
-                }
-            } )
-        }
-
-
-        // initialize niceselect
-        $('select').niceSelect()
-    </script>
     
 </body>
 </html>

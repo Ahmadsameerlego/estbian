@@ -106,5 +106,6 @@ header .dropdown {
 .show_pass {
     right: 3% !important;
     left: auto !important;
-
 }
+.reply_content::before {
+ }
